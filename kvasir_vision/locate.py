@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 
-from .common import ARUCO_DICT, MARKER_LEN_M as marker_size
+from .common import ARUCO_DICT
+from .common import MARKER_LEN_M as marker_size
 
 
 def load_camera_intrinsics(camera_matrix_path: str, dist_coeffs_path: str):

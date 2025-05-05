@@ -1,10 +1,15 @@
+import os
 import time
 from pathlib import Path
+
+os.environ["OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS"] = "0"
 
 import cv2
 from yapper import Yapper
 
-from .common import ARUCO_DICT, BOARD, generate_board_image, CAMERA_INDEX as CAMERA_ID
+from .common import ARUCO_DICT, BOARD
+from .common import CAMERA_INDEX as CAMERA_ID
+from .common import generate_board_image
 
 CAPTURE_INTERVAL = 5.0  # seconds between captures
 MIN_CHARUCO_CORNERS = 20  # minimum corners to accept frame
@@ -60,6 +65,8 @@ def main():
 
     detector_params = cv2.aruco.DetectorParameters()
     cap = cv2.VideoCapture(CAMERA_ID)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
     if not cap.isOpened():
         speak(f"[ERROR] Cannot open camera ID {CAMERA_ID}")
         return
@@ -95,6 +102,7 @@ def main():
             speak(msg)
 
         # Display the frame with detected markers and corners, checking for 'q' to quit.
+        frame = cv2.resize(frame, (960, 540))
         cv2.imshow("Charuco Calib Capture", frame)
         if cv2.waitKey(1) & 0xFF == ord("q"):
             speak("[INFO] Quitting.")

@@ -5,6 +5,7 @@ description = "Vision for the Kvasir robot"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "matplotlib>=3.10.1",
     "numpy>=2.2.5",
     "opencv-contrib-python>=4.11.0.86",
     "yapper-tts>=0.4.0",

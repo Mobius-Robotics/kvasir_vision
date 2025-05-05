@@ -4,6 +4,7 @@ from sys import exit
 from .calibrate import main as calibrate
 from .capture_images import main as capture_images
 from .locate import main as locate
+from .show_distortion import main as show_distortion
 
 
 def main() -> None:
@@ -21,6 +22,10 @@ def main() -> None:
         help="Calibrate the camera using the captured images.",
     )
     subparsers.add_parser(
+        "show_distortion",
+        help="Show the distortion of the camera.",
+    )
+    subparsers.add_parser(
         "locate",
         help="Locate the robot marker in the camera frame.",
     )
@@ -31,6 +36,8 @@ def main() -> None:
             capture_images()
         case "calibrate":
             calibrate()
+        case "show_distortion":
+            show_distortion()
         case "locate":
             locate()
         case _:

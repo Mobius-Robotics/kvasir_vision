@@ -11,3 +11,5 @@ wheels/
 
 # Images
 output/
+
+distortion_visualization.png

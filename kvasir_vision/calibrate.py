@@ -12,7 +12,7 @@ from .common import ARUCO_DICT, BOARD
 def main() -> None:
     # Folder of captured calibration images
     INPUT_DIR = "output/calib_images"
-    image_paths = glob.glob(os.path.join(INPUT_DIR, "*.png"))
+    image_paths = glob.glob(os.path.join(INPUT_DIR, "calib_*.png"))
 
     # Detector parameters
     detector_params = cv2.aruco.DetectorParameters()
